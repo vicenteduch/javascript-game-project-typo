@@ -12,11 +12,16 @@ class Enemy {
 
 }
 
+
 //keeping console logs for future tests
 
 
 let score = 0
 const enemyArr = []
+const arrowArr = []
+
+
+
 
 let currentEnemy = new Enemy();
 //console.log(`Hello! Im the first enemy and my hp is ` + currentEnemy.health)
@@ -42,6 +47,58 @@ function killEnemy() {
 
 currentEnemy = new Enemy();
 
+function getNewSequence() {
+    let arraylength = (4 + Math.floor(score / 3))
+    for (let i = 0; i < arraylength; i++) {
+        arrowArr.push(Math.floor(Math.random() * 4))
+
+    }
+    console.log(arrowArr)
+}
+
+getNewSequence()
+
+let arrowIndex = 0
+
+document.addEventListener('keydown', function (event) {
+    if (controls.includes(event.key)) {
+        checkInputs(event.key)
+    }
+});
+
+const keyMap = {
+    ArrowUp: 0,  // arrowUp ^
+    ArrowDown: 1,  // arrowDown v
+    ArrowLeft: 2,  // arrowLeft <
+    ArrowRight: 3   // arrowRight >
+};
+
+const controls = ["ArrowUp", "ArrowDown", "ArrowRight", "ArrowLeft"]
+const playerInput = [];
+
+
+
+
+function checkInputs(eventKey) {
+
+    if (arrowArr[arrowIndex] === keyMap[eventKey]) {
+        arrowIndex++
+        if (arrowIndex === arrowArr.length) {
+            getNewSequence()
+        }
+
+        console.log("ACIERTO!")
+
+    } else {
+        //fail
+        console.log("FALLO!")
+        arrowIndex = 0
+    }
+
+
+}
+
+
 
 
 
@@ -59,3 +116,5 @@ killEnemy()
 killEnemy()
 console.log(score) 
 */
+
+
