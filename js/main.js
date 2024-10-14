@@ -1,7 +1,10 @@
+
+//classes
+
 class Enemy {
     constructor() {
-        this.health = 10 + Math.floor(score / 3);
-        this.power = 10 + Math.floor(score / 3);
+        this.health = (10 + Math.floor(score / 3));
+        this.power = (1 + Math.floor(score / 3));
     }
 
     checkEnemyHealth() {
@@ -12,38 +15,70 @@ class Enemy {
 
 }
 
+class Player {
+    constructor() {
+        this.health = 10
+        this.power = Math.floor(Math.random() * 3) + 1
+    }
 
-//keeping console logs for future tests
+    checkPlayerHealth() {
+        console.log(player.health)
+        if (player.health <= 0) {
+            console.log("YOU DIED")
+            killPlayer()
+        }
+    }
+}
+
+
+
+
+//Variables
 
 
 let score = 0
+
 const enemyArr = []
+
 let arrowArr = []
 
-
-
+const player = new Player();
 
 let currentEnemy = new Enemy();
-//console.log(`Hello! Im the first enemy and my hp is ` + currentEnemy.health)
 
+const keyMap = {
+    ArrowUp: 0,  // arrowUp ^
+    ArrowDown: 1,  // arrowDown v
+    ArrowLeft: 2,  // arrowLeft <
+    ArrowRight: 3   // arrowRight >
+};
+
+
+console.log(`Hello! im a new player and my hp is ` + player.health + ` and my power is ` + player.power)
+console.log(`Hello! Im the first enemy, my hp is ` + currentEnemy.health + ` and my power is ` + currentEnemy.power)
+
+//functions
 
 function generateNewEnemy() {
     const newEnemy = new Enemy();
     enemyArr.push(newEnemy)
-    currentEnemy = newEnemy
-
-    // console.log("Hello im a new Enemy! and my hp is " + currentEnemy.health)
 
 }
 
 function killEnemy() {
     // console.log("this enemy takes 10 damage")
     score++
-    currentEnemy.health = 0
-    // console.log("your score is " + score)
     enemyArr.pop()
     generateNewEnemy();
 }
+
+function killPlayer() {
+    if (player.health <= 0) {
+        alert("Game Over")
+    }
+}
+
+
 
 currentEnemy = new Enemy();
 let arrowIndex = 0
@@ -69,16 +104,13 @@ document.addEventListener('keydown', function (event) {
     }
 });
 
-const keyMap = {
-    ArrowUp: 0,  // arrowUp ^
-    ArrowDown: 1,  // arrowDown v
-    ArrowLeft: 2,  // arrowLeft <
-    ArrowRight: 3   // arrowRight >
-};
 
 const controls = ["ArrowUp", "ArrowDown", "ArrowRight", "ArrowLeft"]
 const playerInput = [];
 
+function damagePlayer() {
+    player.health = (player.health - currentEnemy.power)
+}
 
 
 
@@ -87,14 +119,17 @@ function checkInputs(eventKey) {
     if (arrowArr[arrowIndex] === keyMap[eventKey]) {
         arrowIndex++
         if (arrowIndex === arrowArr.length) {
-            score++
+            score++ //remove after adding enemy functionality
             getNewSequence()
         }
 
         console.log("ACIERTO!")
+        console.log("your score is ", score)
 
     } else {
-        //fail
+        damagePlayer()
+        player.checkPlayerHealth()
+        console.log("player has " + player.health + "hp")
         console.log("FALLO!")
         arrowIndex = 0
     }
