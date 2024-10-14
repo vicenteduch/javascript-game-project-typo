@@ -32,7 +32,6 @@ class Player {
 
 
 
-
 //Variables
 
 
@@ -57,10 +56,17 @@ const controls = ["ArrowUp", "ArrowDown", "ArrowRight", "ArrowLeft"]
 
 const playerInput = [];
 
+document.addEventListener('keydown', function (event) { // -> Event Listener to check that you only type the controls keys.
+    if (controls.includes(event.key)) {
+        checkInputs(event.key)
+    }
+});
+
 console.log(`Hello! im a new player and my hp is ` + player.health + ` and my power is ` + player.power)
 console.log(`Hello! Im the first enemy, my hp is ` + currentEnemy.health + ` and my power is ` + currentEnemy.power)
 
 //Functions
+
 
 currentEnemy = new Enemy();
 let arrowIndex = 0
@@ -74,8 +80,16 @@ function generateNewEnemy() {
 
 }
 
+function enemyIntervalAttack(){
+    setInterval(()=>{
+        console.log("El enemigo te hace " + currentEnemy.power + " punto(s) de daño" )
+        damagePlayer()
+    }, 5000)
+}
+
+
+
 function killEnemy() {
-    // console.log("this enemy takes 10 damage")
     score++
     enemyArr.pop()
     generateNewEnemy();
@@ -101,14 +115,6 @@ function getNewSequence() {
     console.log(arrowArr)
 }
 
-getNewSequence()
-
-
-document.addEventListener('keydown', function (event) {
-    if (controls.includes(event.key)) {
-        checkInputs(event.key)
-    }
-});
 
 
 
@@ -122,7 +128,6 @@ function damageEnemy() {
 }
 
 
-
 function checkInputs(eventKey) {
 
     if (arrowArr[arrowIndex] === keyMap[eventKey]) {
@@ -133,10 +138,7 @@ function checkInputs(eventKey) {
             console.log("Enemy HP is ", currentEnemy.health)
             getNewSequence()
         }
-
         console.log("ACIERTO!")
-      
-
     } else {
         damagePlayer()
         player.checkPlayerHealth()
@@ -149,22 +151,6 @@ function checkInputs(eventKey) {
 }
 
 
-
-
-
-/* 
-killEnemy()
-killEnemy()
-killEnemy()
-console.log(score)
-killEnemy()
-killEnemy()
-killEnemy()
-console.log(score)
-killEnemy()
-killEnemy()
-killEnemy()
-console.log(score) 
-*/
-
+enemyIntervalAttack()
+getNewSequence()
 
