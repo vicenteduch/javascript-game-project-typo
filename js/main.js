@@ -3,7 +3,7 @@
 
 class Enemy {
     constructor() {
-        this.health = (10 + Math.floor(score / 3));
+        this.health = (3 + Math.floor(score / 3));
         this.power = (1 + Math.floor(score / 3));
     }
 
@@ -53,14 +53,23 @@ const keyMap = {
     ArrowRight: 3   // arrowRight >
 };
 
+const controls = ["ArrowUp", "ArrowDown", "ArrowRight", "ArrowLeft"]
+
+const playerInput = [];
 
 console.log(`Hello! im a new player and my hp is ` + player.health + ` and my power is ` + player.power)
 console.log(`Hello! Im the first enemy, my hp is ` + currentEnemy.health + ` and my power is ` + currentEnemy.power)
 
-//functions
+//Functions
+
+currentEnemy = new Enemy();
+let arrowIndex = 0
+
 
 function generateNewEnemy() {
+    console.log("hi im a new Enemy")
     const newEnemy = new Enemy();
+    currentEnemy = newEnemy
     enemyArr.push(newEnemy)
 
 }
@@ -70,6 +79,7 @@ function killEnemy() {
     score++
     enemyArr.pop()
     generateNewEnemy();
+    console.log(score)
 }
 
 function killPlayer() {
@@ -78,10 +88,6 @@ function killPlayer() {
     }
 }
 
-
-
-currentEnemy = new Enemy();
-let arrowIndex = 0
 
 function getNewSequence() {
     arrowArr = []
@@ -105,11 +111,14 @@ document.addEventListener('keydown', function (event) {
 });
 
 
-const controls = ["ArrowUp", "ArrowDown", "ArrowRight", "ArrowLeft"]
-const playerInput = [];
+
 
 function damagePlayer() {
     player.health = (player.health - currentEnemy.power)
+}
+
+function damageEnemy() {
+    currentEnemy.health = (currentEnemy.health - player.power)
 }
 
 
@@ -119,12 +128,14 @@ function checkInputs(eventKey) {
     if (arrowArr[arrowIndex] === keyMap[eventKey]) {
         arrowIndex++
         if (arrowIndex === arrowArr.length) {
-            score++ //remove after adding enemy functionality
+            damageEnemy()
+            currentEnemy.checkEnemyHealth()
+            console.log("Enemy HP is ", currentEnemy.health)
             getNewSequence()
         }
 
         console.log("ACIERTO!")
-        console.log("your score is ", score)
+      
 
     } else {
         damagePlayer()
