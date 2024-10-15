@@ -1,4 +1,3 @@
-
 //classes
 
 class Enemy {
@@ -22,7 +21,7 @@ class Player {
     }
 
     checkPlayerHealth() {
-        console.log(player.health)
+        console.log("el jugador tiene esta vida: ", player.health)
         if (player.health <= 0) {
             console.log("YOU DIED")
             killPlayer()
@@ -30,10 +29,7 @@ class Player {
     }
 }
 
-
-
 //Variables
-
 
 let score = 0
 
@@ -65,43 +61,12 @@ document.addEventListener('keydown', function (event) { // -> Event Listener to 
 console.log(`Hello! im a new player and my hp is ` + player.health + ` and my power is ` + player.power)
 console.log(`Hello! Im the first enemy, my hp is ` + currentEnemy.health + ` and my power is ` + currentEnemy.power)
 
-//Functions
-
-
 currentEnemy = new Enemy();
 let arrowIndex = 0
 
 
-function generateNewEnemy() {
-    console.log("hi im a new Enemy")
-    const newEnemy = new Enemy();
-    currentEnemy = newEnemy
-    enemyArr.push(newEnemy)
 
-}
-
-function enemyIntervalAttack(){
-    setInterval(()=>{
-        console.log("El enemigo te hace " + currentEnemy.power + " punto(s) de daño" )
-        damagePlayer()
-    }, 5000)
-}
-
-
-
-function killEnemy() {
-    score++
-    enemyArr.pop()
-    generateNewEnemy();
-    console.log(score)
-}
-
-function killPlayer() {
-    if (player.health <= 0) {
-        alert("Game Over")
-    }
-}
-
+//Game mechanics functions
 
 function getNewSequence() {
     arrowArr = []
@@ -115,40 +80,92 @@ function getNewSequence() {
     console.log(arrowArr)
 }
 
-
-
-
-
-function damagePlayer() {
-    player.health = (player.health - currentEnemy.power)
-}
-
-function damageEnemy() {
-    currentEnemy.health = (currentEnemy.health - player.power)
-}
-
-
 function checkInputs(eventKey) {
 
     if (arrowArr[arrowIndex] === keyMap[eventKey]) {
         arrowIndex++
         if (arrowIndex === arrowArr.length) {
-            damageEnemy()
-            currentEnemy.checkEnemyHealth()
-            console.log("Enemy HP is ", currentEnemy.health)
-            getNewSequence()
+            correctInput()
         }
         console.log("ACIERTO!")
     } else {
-        damagePlayer()
-        player.checkPlayerHealth()
-        console.log("player has " + player.health + "hp")
-        console.log("FALLO!")
+        wrongInput()
         arrowIndex = 0
     }
+}
 
+
+function wrongInput() {
+    console.log("FALLO!")
+    player.health -= currentEnemy.power
+    player.checkPlayerHealth()
+    console.log("player has " + player.health + "hp")
+}
+
+function correctInput() {
+    enemyIntervalAttack()
+    damageEnemy()
+    currentEnemy.checkEnemyHealth()
+    console.log("Enemy HP is ", currentEnemy.health)
+    getNewSequence()
+}
+
+//Player functions
+
+
+function damagePlayer() {
+    console.log("El enemigo te hace " + currentEnemy.power + " punto(s) de daño")
+    player.health = (player.health - currentEnemy.power)
+    player.checkPlayerHealth()
 
 }
+
+
+function killPlayer() {
+    if (player.health <= 0) {
+        alert("Game Over")
+    }
+}
+
+// Enemy functions
+
+function generateNewEnemy() {
+    console.log("hi im a new Enemy")
+    const newEnemy = new Enemy();
+    currentEnemy = newEnemy
+    enemyArr.push(newEnemy)
+
+}
+
+
+let enemyTimer
+
+function enemyIntervalAttack() {
+
+    if (enemyTimer) {
+        clearTimeout(enemyTimer)
+    }
+    enemyTimer = setTimeout(() => {
+        damagePlayer()
+        enemyIntervalAttack()
+    }, 5000)
+}
+
+function damageEnemy() {
+
+    currentEnemy.health = (currentEnemy.health - player.power)
+
+}
+
+function killEnemy() {
+    score++
+    enemyArr.pop()
+    generateNewEnemy();
+    console.log(score)
+}
+
+
+////////////////////////////////
 
 
 enemyIntervalAttack()
