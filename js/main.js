@@ -2,8 +2,8 @@
 
 class Enemy {
     constructor() {
-        this.health = (3 + Math.floor(score / 3));
-        this.power = (1 + Math.floor(score / 3));
+        this.health = (3 + Math.floor(score / 3))
+        this.power = (1 + Math.floor(score / 3))
     }
 
     checkEnemyHealth() {
@@ -17,7 +17,7 @@ class Enemy {
 class Player {
     constructor() {
         this.health = 10
-        this.power = Math.floor(Math.random() * 3) + 1
+        this.power = 2
     }
 
     checkPlayerHealth() {
@@ -37,34 +37,46 @@ const enemyArr = []
 
 let arrowArr = []
 
-const player = new Player();
+const player = new Player()
 
-let currentEnemy = new Enemy();
+let currentEnemy = new Enemy()
 
 const keyMap = {
     ArrowUp: 0,  // arrowUp ^
     ArrowDown: 1,  // arrowDown v
     ArrowLeft: 2,  // arrowLeft <
     ArrowRight: 3   // arrowRight >
-};
+}
+
+const arrowImages = {
+    0: "./src/arrow-up.png",
+    1: "./src/arrow-down.png",
+    2: "./src/arrow-left.png",
+    3: "./src/arrow-right.png"
+}
 
 const controls = ["ArrowUp", "ArrowDown", "ArrowRight", "ArrowLeft"]
 
-const playerInput = [];
+const playerInput = []
 
 document.addEventListener('keydown', function (event) { // -> Event Listener to check that you only type the controls keys.
     if (controls.includes(event.key)) {
         checkInputs(event.key)
     }
-});
+})
 
 console.log(`Hello! im a new player and my hp is ` + player.health + ` and my power is ` + player.power)
 console.log(`Hello! Im the first enemy, my hp is ` + currentEnemy.health + ` and my power is ` + currentEnemy.power)
 
-currentEnemy = new Enemy();
+currentEnemy = new Enemy()
+
 let arrowIndex = 0
-
-
+let startbutton = document.getElementById("start-button")
+let mainMenu = document.getElementById("main-container")
+let gameScreen = document.getElementById("game-container")
+let arrowsImg = document.getElementById("arrow-container")
+let playerHp = document.getElementById("playerHP")
+let killCount = document.getElementById("score")
 
 //Game mechanics functions
 
@@ -76,8 +88,32 @@ function getNewSequence() {
 
     }
     arrowIndex = 0
-
+    showArrows()
     console.log(arrowArr)
+}
+
+function showArrows() {
+    arrowsImg.innerHTML = "" //clearing previous arrows
+
+    arrowArr.forEach(value => {
+        const img = document.createElement("img")
+        img.src = arrowImages[value]
+        arrowsImg.appendChild(img)
+    })
+}
+
+function showScore() {
+    let killCount = document.getElementById("score")
+    let playerScore = document.getElementById("playerScore")
+
+    if (!playerScore) {
+        playerScore = document.createElement("h2")
+        playerScore.id = "playerScore"
+        playerScore.style.color = "white"
+        killCount.appendChild(playerScore)
+    }
+
+    playerScore.innerText = `Kill Streak ${score}`
 }
 
 function checkInputs(eventKey) {
@@ -110,6 +146,7 @@ function correctInput() {
     getNewSequence()
 }
 
+
 //Player functions
 
 
@@ -123,7 +160,7 @@ function damagePlayer() {
 
 function killPlayer() {
     if (player.health <= 0) {
-        alert("Game Over")
+        location.href = "gameover.html"
     }
 }
 
@@ -131,7 +168,7 @@ function killPlayer() {
 
 function generateNewEnemy() {
     console.log("hi im a new Enemy")
-    const newEnemy = new Enemy();
+    const newEnemy = new Enemy()
     currentEnemy = newEnemy
     enemyArr.push(newEnemy)
 
@@ -148,7 +185,7 @@ function enemyIntervalAttack() {
     enemyTimer = setTimeout(() => {
         damagePlayer()
         enemyIntervalAttack()
-    }, 5000)
+    }, 3000)
 }
 
 function damageEnemy() {
@@ -159,15 +196,30 @@ function damageEnemy() {
 
 function killEnemy() {
     score++
+    showScore()
+    console.log("This is your score: ", score)
     enemyArr.pop()
-    generateNewEnemy();
+    generateNewEnemy()
     console.log(score)
 }
 
 
-////////////////////////////////
+//Event Listeners
 
 
-enemyIntervalAttack()
-getNewSequence()
+
+startbutton.addEventListener("click", () => {
+
+    enemyIntervalAttack()
+    showScore()
+    getNewSequence()
+    mainMenu.style.display = "none"
+    gameScreen.style.display = "flex"
+
+})
+
+
+
+//enemyIntervalAttack()
+//getNewSequence()
 

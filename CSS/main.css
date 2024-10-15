@@ -1,3 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    background: lightblue
+    background-color: rgb(15, 15, 15);
+}
+
+
+h1 {
+    color: white
+}
+
+#main-container {
+    background-image: url(../src/MainBackground.jpg);
+}
+
+#game-container {
+    display: none;
+    background-image: url(../src/MainBackground2.jpg);
+}
+
+#gameOver-container {
+    background-image: url(../src/GameOverBackground.jpg)
+}
+
+.background-container {
+    display: flex;
+    width: 90%;
+    height: 500px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-position-y: 65%;
+    position: absolute;
+    margin: auto;
+    align-items: center;
+    justify-content: space-around;
+    top: 15%;
+    left: 5%
+}
+
+#start-button {
+    position: absolute;
+    display: block;
+    margin: auto;
+}
+
+#arrow-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#arrow-container img {
+    width: 10%;
+    height: auto;
+}
+
+#score {
+    width: 20px;
+    height: 20px;
+
+}
+
+#score h2 {
+    color: white
 }
