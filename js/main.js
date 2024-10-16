@@ -47,21 +47,17 @@ const keyMap = {
 }
 
 const arrowImages = {
-    0: "./src/arrow-up.png",
-    1: "./src/arrow-down.png",
-    2: "./src/arrow-left.png",
-    3: "./src/arrow-right.png"
+    0: "./src/arrow-up",
+    1: "./src/arrow-down",
+    2: "./src/arrow-left",
+    3: "./src/arrow-right"
 }
 
 const controls = ["ArrowUp", "ArrowDown", "ArrowRight", "ArrowLeft"]
 
 const playerInput = []
 
-document.addEventListener('keydown', function (event) { // -> Event Listener to check that you only type the controls keys.
-    if (controls.includes(event.key)) {
-        checkInputs(event.key)
-    }
-})
+
 
 
 
@@ -91,10 +87,19 @@ function getNewSequence() {
 function showArrows() {
     arrowsImg.innerHTML = ""
 
-    arrowArr.forEach(value => {
+    arrowArr.forEach((value, i) => {
         const img = document.createElement("img")
-        img.style.width = `10%`
-        img.src = arrowImages[value]
+
+        if (i === arrowIndex){
+            img.style.width = `10%`
+            img.src = `${arrowImages[value]}_active.png`
+        } else if (i < arrowIndex){
+            img.style.width = `10%`
+            img.src = `${arrowImages[value]}_true.png`
+        } else {
+            img.src = `${arrowImages[value]}.png`
+        }
+        
         arrowsImg.appendChild(img)
     })
 }
@@ -117,6 +122,7 @@ function checkInputs(eventKey) {
 
     if (arrowArr[arrowIndex] === keyMap[eventKey]) {
         arrowIndex++
+        showArrows()
         if (arrowIndex === arrowArr.length) {
             correctInput()
         }
@@ -124,6 +130,7 @@ function checkInputs(eventKey) {
     } else {
         wrongInput()
         arrowIndex = 0
+        showArrows()
     }
 }
 
@@ -237,6 +244,12 @@ startbutton.addEventListener("click", () => {
     mainMenu.style.display = "none"
     gameScreen.style.display = "flex"
 
+})
+
+document.addEventListener('keydown', function (event) { // -> Event Listener to check that you only type the controls keys.
+    if (controls.includes(event.key)) {
+        checkInputs(event.key)
+    }
 })
 
 
