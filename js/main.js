@@ -135,6 +135,7 @@ function wrongInput() {
     console.log("FALLO!")
     player.health -= currentEnemy.power
     player.checkPlayerHealth()
+    showPlayerHp()
     console.log("player has " + player.health + "hp")
 }
 
@@ -154,6 +155,7 @@ function damagePlayer() {
     console.log("El enemigo te hace " + currentEnemy.power + " punto(s) de daño")
     player.health = (player.health - currentEnemy.power)
     player.checkPlayerHealth()
+    showPlayerHp()
 
 }
 
@@ -162,6 +164,20 @@ function killPlayer() {
     if (player.health <= 0) {
         location.href = "gameover.html"
     }
+}
+
+function showPlayerHp(){
+    let playerHitPoints = document.getElementById("playerHP")
+    let remainingHp = document.getElementById("remainingHp")
+
+    if (!remainingHp) {
+        remainingHp = document.createElement("h2")
+        remainingHp.id = "remainingHp"
+        remainingHp.style.color ="white"
+        playerHitPoints.appendChild(remainingHp)
+    }
+
+    remainingHp.innerText =`${player.health} HP`
 }
 
 // Enemy functions
@@ -212,6 +228,7 @@ startbutton.addEventListener("click", () => {
 
     enemyIntervalAttack()
     showScore()
+    showPlayerHp()
     getNewSequence()
     mainMenu.style.display = "none"
     gameScreen.style.display = "flex"
