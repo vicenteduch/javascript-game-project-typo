@@ -93,6 +93,7 @@ function showArrows() {
 
     arrowArr.forEach(value => {
         const img = document.createElement("img")
+        img.style.width = `10%`
         img.src = arrowImages[value]
         arrowsImg.appendChild(img)
     })
