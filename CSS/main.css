@@ -3,13 +3,20 @@
     padding: 0;
 }
 
+.press-start-2p-regular {
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
+
 body {
     background-color: rgb(15, 15, 15);
 }
 
 
 h1 {
-    color: white
+    color: white;
+    font-family: "Press Start 2P"
 }
 
 #main-container {
@@ -23,19 +30,24 @@ h1 {
     background-image: url(../src/MainBackground2.jpg);
 }
 
+#game-container img{
+    margin-right: 5px;
+}
+
 #gameOver-container {
     background-image: url(../src/gameover-background2.jpg)
 }
 
 #main-title {
     top: 5%;
+    font-family: "Press Start 2P"
     
 }
 
 #main-container h1 {
     left: 5%;
     bottom: 30%;
-    position: absolute
+    position: absolute;
 }
 
 #main-container p {
@@ -45,6 +57,7 @@ h1 {
     position: absolute;
     color: white;
     width: 600px;
+    
 }
 
 .background-container {
@@ -98,6 +111,7 @@ h1 {
     left: 5%;
     align-items: center;
     flex-direction: row;
+    font-family: "Press Start 2P"
     
 }
 
@@ -179,7 +193,8 @@ h1 {
 }
 
 #playerHP h2 {
-    font-size: 2rem
+    font-size: 2rem;
+    font-family: "Press Start 2P"
     
 }
 
@@ -203,5 +218,12 @@ h1 {
 }
 
 #enemyHP h2 {
-    font-size: 2rem
+    font-size: 2rem;
+    font-family: "Press Start 2P"
+}
+
+#countdown {
+    display: flex;
+    color: white;
+
 }

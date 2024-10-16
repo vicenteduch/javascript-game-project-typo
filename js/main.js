@@ -71,7 +71,7 @@ let arrowsImg = document.getElementById("arrow-container")
 let playerHp = document.getElementById("playerHP")
 let killCount = document.getElementById("score")
 
-//Game mechanics functions
+//Game mechanics functions//////////////////////////////////////////
 
 function getNewSequence() {
     arrowArr = []
@@ -94,6 +94,7 @@ function showArrows() {
             img.src = `${arrowImages[value]}_active.png`
         } else if (i < arrowIndex) {
             img.src = `${arrowImages[value]}_true.png`
+            img.style.opacity = `50`
         } else {
             img.src = `${arrowImages[value]}.png`
         }
@@ -148,7 +149,7 @@ function correctInput() {
 }
 
 
-//Player functions
+//Player functions//////////////////////////////////////////////////
 
 
 function damagePlayer() {
@@ -179,7 +180,7 @@ function showPlayerHp() {
     remainingHp.innerText = `${player.health} HP`
 }
 
-// Enemy functions
+// Enemy functions/////////////////////////////////////////////
 
 function generateNewEnemy() {
     const newEnemy = new Enemy()
