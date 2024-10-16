@@ -91,10 +91,8 @@ function showArrows() {
         const img = document.createElement("img")
 
         if (i === arrowIndex){
-            img.style.width = `10%`
             img.src = `${arrowImages[value]}_active.png`
-        } else if (i < arrowIndex){
-            img.style.width = `10%`
+        } else if (i < arrowIndex){ 
             img.src = `${arrowImages[value]}_true.png`
         } else {
             img.src = `${arrowImages[value]}.png`
