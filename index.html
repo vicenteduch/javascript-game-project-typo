@@ -13,24 +13,31 @@
 </head>
 
 <body>
+
+
     <div id="main-container" class="background-container">
-        <button id="start-button" type="button">Enter the dungeon!</button>
+        <h1 id ="main-title">The cave of the Typomancer</h1>
+        <button id="start-button" type="button">Enter the cave!</button>
+        <h1 id="howToPlay">How to play </h1>
+        <p>The goal is to defeat enemies by following arrow sequences. Use the arrow keys (↑, ↓, ←, →) to match the
+            sequence on screen (you have 3 seconds to do this). <br> 
+            Correct inputs damage the enemy, while mistakes or time running out, reduce your health (HP).<br> The game ends
+            when your HP reaches 0</p>
     </div>
 
 
     <div id="game-container" class="background-container">
         <div id="score"><img src="./src/score-img.png"></div>
-        <div id="playerHP"><div id="playerHpImg"><img src="./src/life-counter-img.png"></div></div>
-        <div id="enemyHP"><img src="./src/enemy-health-counter.png"></div></div>
-    
-        <div id="arrow-container"></div>
+        <div id="playerHP">
+            <div id="playerHpImg"><img src="./src/life-counter-img.png"></div>
+        </div>
+        <div id="enemyHP"><img src="./src/enemy-health-counter.png"></div>
     </div>
-    <h1></h1>
+
+    <div id="arrow-container"></div>
+    </div>
 
     <script src="" async defer></script>
-
-
-
     <script src="js/main.js"></script>
 </body>
 

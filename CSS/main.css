@@ -14,6 +14,8 @@ h1 {
 
 #main-container {
     background-image: url(../src/MainBackground.jpg);
+    align-items: center;
+    justify-items: center;
 }
 
 #game-container {
@@ -22,7 +24,27 @@ h1 {
 }
 
 #gameOver-container {
-    background-image: url(../src/GameOverBackground.jpg)
+    background-image: url(../src/gameover-background2.jpg)
+}
+
+#main-title {
+    top: 5%;
+    
+}
+
+#main-container h1 {
+    left: 5%;
+    bottom: 30%;
+    position: absolute
+}
+
+#main-container p {
+    font-size: 1.2rem;
+    left: 5%;
+    bottom: 10%;
+    position: absolute;
+    color: white;
+    width: 600px;
 }
 
 .background-container {
@@ -39,10 +61,19 @@ h1 {
     left: 0
 }
 
-#start-button {
-    position: absolute;
-    display: block;
+#howToPlay {
+    display: flex;
+    position: relative;
     margin: auto;
+}
+
+#start-button {
+    display: flex;
+    position: relative;
+    margin: auto;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
 }
 
 #arrow-container {
@@ -82,7 +113,61 @@ h1 {
 }
 
 
+#gameOver {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    top: 5%
+}
 
+#gameOver img{
+    width: 30%;
+    margin-bottom: 40px;
+    
+}
+
+#gameOver button{
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.fade-in {
+    animation: fadeIn ease 2s;
+    -webkit-animation: fadeIn ease 2s;
+    -moz-animation: fadeIn ease 2s;
+    -o-animation: fadeIn ease 2s;
+    -ms-animation: fadeIn ease 2s;
+  }
+  @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+
+  
 
 #playerHP {
     display: flex;

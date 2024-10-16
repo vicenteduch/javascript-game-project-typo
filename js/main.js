@@ -40,10 +40,10 @@ const player = new Player()
 let currentEnemy = new Enemy()
 
 const keyMap = {
-    ArrowUp: 0,  // arrowUp ^
-    ArrowDown: 1,  // arrowDown v
-    ArrowLeft: 2,  // arrowLeft <
-    ArrowRight: 3   // arrowRight >
+    ArrowUp: 0,
+    ArrowDown: 1,
+    ArrowLeft: 2,
+    ArrowRight: 3
 }
 
 const arrowImages = {
@@ -86,18 +86,18 @@ function getNewSequence() {
 
 function showArrows() {
     arrowsImg.innerHTML = ""
-
+    arrowsImg.className = "fade-in"
     arrowArr.forEach((value, i) => {
         const img = document.createElement("img")
 
-        if (i === arrowIndex){
+        if (i === arrowIndex) {
             img.src = `${arrowImages[value]}_active.png`
-        } else if (i < arrowIndex){ 
+        } else if (i < arrowIndex) {
             img.src = `${arrowImages[value]}_true.png`
         } else {
             img.src = `${arrowImages[value]}.png`
         }
-        
+
         arrowsImg.appendChild(img)
     })
 }
@@ -244,7 +244,7 @@ startbutton.addEventListener("click", () => {
 
 })
 
-document.addEventListener('keydown', function (event) { // -> Event Listener to check that you only type the controls keys.
+document.addEventListener('keydown', function (event) {
     if (controls.includes(event.key)) {
         checkInputs(event.key)
     }
