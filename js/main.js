@@ -21,9 +21,7 @@ class Player {
     }
 
     checkPlayerHealth() {
-        console.log("el jugador tiene esta vida: ", player.health)
         if (player.health <= 0) {
-            console.log("YOU DIED")
             killPlayer()
         }
     }
@@ -65,8 +63,7 @@ document.addEventListener('keydown', function (event) { // -> Event Listener to 
     }
 })
 
-console.log(`Hello! im a new player and my hp is ` + player.health + ` and my power is ` + player.power)
-console.log(`Hello! Im the first enemy, my hp is ` + currentEnemy.health + ` and my power is ` + currentEnemy.power)
+
 
 currentEnemy = new Enemy()
 
@@ -89,11 +86,10 @@ function getNewSequence() {
     }
     arrowIndex = 0
     showArrows()
-    console.log(arrowArr)
 }
 
 function showArrows() {
-    arrowsImg.innerHTML = "" //clearing previous arrows
+    arrowsImg.innerHTML = ""
 
     arrowArr.forEach(value => {
         const img = document.createElement("img")
@@ -113,7 +109,7 @@ function showScore() {
         killCount.appendChild(playerScore)
     }
 
-    playerScore.innerText = `Kill Streak ${score}`
+    playerScore.innerText = `x ${score}`
 }
 
 function checkInputs(eventKey) {
@@ -123,7 +119,7 @@ function checkInputs(eventKey) {
         if (arrowIndex === arrowArr.length) {
             correctInput()
         }
-        console.log("ACIERTO!")
+
     } else {
         wrongInput()
         arrowIndex = 0
@@ -132,18 +128,16 @@ function checkInputs(eventKey) {
 
 
 function wrongInput() {
-    console.log("FALLO!")
     player.health -= currentEnemy.power
     player.checkPlayerHealth()
     showPlayerHp()
-    console.log("player has " + player.health + "hp")
 }
 
 function correctInput() {
     enemyIntervalAttack()
     damageEnemy()
     currentEnemy.checkEnemyHealth()
-    console.log("Enemy HP is ", currentEnemy.health)
+    showEnemyHp()
     getNewSequence()
 }
 
@@ -152,7 +146,6 @@ function correctInput() {
 
 
 function damagePlayer() {
-    console.log("El enemigo te hace " + currentEnemy.power + " punto(s) de daño")
     player.health = (player.health - currentEnemy.power)
     player.checkPlayerHealth()
     showPlayerHp()
@@ -166,30 +159,28 @@ function killPlayer() {
     }
 }
 
-function showPlayerHp(){
+function showPlayerHp() {
     let playerHitPoints = document.getElementById("playerHP")
     let remainingHp = document.getElementById("remainingHp")
 
     if (!remainingHp) {
         remainingHp = document.createElement("h2")
         remainingHp.id = "remainingHp"
-        remainingHp.style.color ="white"
+        remainingHp.style.color = "white"
         playerHitPoints.appendChild(remainingHp)
     }
 
-    remainingHp.innerText =`${player.health} HP`
+    remainingHp.innerText = `${player.health} HP`
 }
 
 // Enemy functions
 
 function generateNewEnemy() {
-    console.log("hi im a new Enemy")
     const newEnemy = new Enemy()
     currentEnemy = newEnemy
     enemyArr.push(newEnemy)
 
 }
-
 
 let enemyTimer
 
@@ -210,25 +201,37 @@ function damageEnemy() {
 
 }
 
+function showEnemyHp() {
+    let enemyHp = document.getElementById("enemyHP")
+    let enemyRemainingHp = document.getElementById("enemyRemainingHp")
+
+    if (!enemyRemainingHp) {
+        enemyRemainingHp = document.createElement("h2")
+        enemyRemainingHp.id = "enemyRemainingHp"
+        enemyRemainingHp.style.color = "white"
+        enemyHp.appendChild(enemyRemainingHp)
+    }
+
+    enemyRemainingHp.innerText = `${currentEnemy.health} HP`
+}
+
 function killEnemy() {
     score++
     showScore()
-    console.log("This is your score: ", score)
     enemyArr.pop()
     generateNewEnemy()
-    console.log(score)
-}
+    showEnemyHp()
 
+}
 
 //Event Listeners
 
-
-
 startbutton.addEventListener("click", () => {
 
-    enemyIntervalAttack()
+    // enemyIntervalAttack()  <-- volver a activar después de testear
     showScore()
     showPlayerHp()
+    showEnemyHp()
     getNewSequence()
     mainMenu.style.display = "none"
     gameScreen.style.display = "flex"
@@ -236,7 +239,4 @@ startbutton.addEventListener("click", () => {
 })
 
 
-
-//enemyIntervalAttack()
-//getNewSequence()
 
