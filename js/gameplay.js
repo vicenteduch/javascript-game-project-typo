@@ -94,7 +94,9 @@ function playMusic() {
 }
 
 
+
 function playSound(sound) {
     sound.volume = 0.2
     sound.play()
 }
+

@@ -102,8 +102,9 @@ function animateReceivedDamage() {
 function killPlayer() {
 
     if (player.health <= 0) {
-
+        localStorage.setItem('finalScore', score)
         location.href = "gameover.html"
+
 
     }
 }

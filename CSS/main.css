@@ -150,10 +150,12 @@ h1 {
 
 }
 
-
-#gameOver-container {
-    background-image: url(../src/gameover-background2.jpg)
+#total-score {
+    font-family: "Press Start 2P";
+    color: white;
+    margin-top: 3%;
 }
+
 
 /* PLAYER AND ENEMY */
 
@@ -250,8 +252,9 @@ h1 {
 }
 
 #gameOver img {
-    width: 30%;
-    margin-bottom: 40px;
+    width: 25%;
+    margin-bottom: 7%;
+
 
 }
 
@@ -261,6 +264,7 @@ h1 {
     border-radius: 10px;
     z-index: 50;
 }
+
 
 
 /*ANIMATIONS*/
@@ -392,10 +396,9 @@ h1 {
     animation-duration: 2s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
-    left: 44%;
-    top: 73%;
+    left: 42%;
+    top: 60%;
     height:130px;
-    
 }
 
 @keyframes hero-animation-die {
