@@ -72,6 +72,7 @@ h1 {
     font-family: "Pixelify Sans", sans-serif
 }
 
+
 #howToPlay {
     display: flex;
     position: relative;
@@ -244,7 +245,8 @@ h1 {
     justify-content: center;
     align-items: center;
     width: 100%;
-    top: 5%
+    top: 5%;
+    transition: 1s;
 }
 
 #gameOver img {
@@ -257,6 +259,7 @@ h1 {
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 10px;
+    z-index: 50;
 }
 
 
@@ -381,6 +384,26 @@ h1 {
     }
 }
 
+#hero.animated.die {
+    background-image: url("../src/player-character/player-death.png");
+    animation-timing-function: steps(11);
+    background-size: 2400px;
+    animation-name: hero-animation-die;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: both;
+    left: 42%;
+    top: 69%;
+    height:130px;
+    
+}
+
+@keyframes hero-animation-die {
+    100% {
+        background-position-x: -2200px;
+    }
+}
+
 #enemy {
     position: absolute;
     width: 150px;
@@ -448,7 +471,8 @@ h1 {
     background-size: 2400px;
     animation-name: enemy-animation-die;
     animation-duration: .5s;
-
+    
+    
 
 }
 

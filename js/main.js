@@ -100,8 +100,11 @@ function animateReceivedDamage() {
 
 
 function killPlayer() {
+
     if (player.health <= 0) {
+
         location.href = "gameover.html"
+
     }
 }
 
@@ -130,6 +133,7 @@ function generateNewEnemy() {
 
 let enemyTimer
 
+
 function enemyIntervalAttack() {
 
     if (enemyTimer) {
@@ -151,8 +155,7 @@ function animateEnemyAttack() {
 
 function animateEnemyDeath() {
     enemy.className = "animated die"
-
-    setTimeout(()=> {
+    setTimeout(() => {
         enemy.className = "animated idle"
     }, 1000)
 }
