@@ -7,14 +7,14 @@
     font-family: "Press Start 2P", system-ui;
     font-weight: 400;
     font-style: normal;
-  }
+}
 
-  .pixelify-sans-pfont {
+.pixelify-sans-pfont {
     font-family: "Pixelify Sans", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 400 ;
+    font-weight: 400;
     font-style: normal;
-  }
+}
 
 body {
     background-color: rgb(15, 15, 15);
@@ -37,7 +37,7 @@ h1 {
     background-image: url(../src/MainBackground2.jpg);
 }
 
-#game-container img{
+#game-container img {
     margin-right: 5px;
 }
 
@@ -48,7 +48,7 @@ h1 {
 #main-title {
     top: 5%;
     font-family: "Press Start 2P"
-    
+
 }
 
 #main-container h1 {
@@ -65,7 +65,6 @@ h1 {
     color: white;
     width: 600px;
     font-family: "Pixelify Sans", sans-serif
-    
 }
 
 .background-container {
@@ -120,19 +119,32 @@ h1 {
     align-items: center;
     flex-direction: row;
     font-family: "Press Start 2P"
-    
+
 }
 
 #score h2 {
- 
+
     font-size: 2rem
 }
 
 #score img {
-    
-    width: 50px;
+
+    width: 80px;
 
 }
+
+#platform {
+    background-image: url(../src/base-platform.png);
+    display: flex;
+    position: absolute;
+    width: 40%;
+    height: 30%;
+    top: 60%;
+    left: 30%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 
 
 #gameOver {
@@ -145,13 +157,13 @@ h1 {
     top: 5%
 }
 
-#gameOver img{
+#gameOver img {
     width: 30%;
     margin-bottom: 40px;
-    
+
 }
 
-#gameOver button{
+#gameOver button {
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 10px;
@@ -163,33 +175,59 @@ h1 {
     -moz-animation: fadeIn ease 2s;
     -o-animation: fadeIn ease 2s;
     -ms-animation: fadeIn ease 2s;
-  }
-  @keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
-  }
-  
-  @-moz-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
-  }
-  
-  @-webkit-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
-  }
-  
-  @-o-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
-  }
-  
-  @-ms-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
-  }
+}
 
-  
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
 
 #playerHP {
     display: flex;
@@ -203,7 +241,7 @@ h1 {
 #playerHP h2 {
     font-size: 2rem;
     font-family: "Press Start 2P"
-    
+
 }
 
 #playerDmg {
@@ -227,7 +265,7 @@ h1 {
 
 
 
-#playerHP img{
+#playerHP img {
     width: 50px;
 }
 
@@ -238,10 +276,10 @@ h1 {
     right: 5%;
     align-items: center;
     flex-direction: row;
-   
+
 }
 
-#enemyHP img{
+#enemyHP img {
     width: 50px;
     padding-bottom: 10px;
     margin-right: 10px;
@@ -271,7 +309,65 @@ h1 {
     font-family: "Press Start 2P"
 }
 
-#enemyDmg img{
+#enemyDmg img {
     width: 50px;
     margin-right: 15px;
+}
+
+#hero {
+    position: absolute;
+    width: 230px;
+    height: 150px;
+    top: 46%;
+    left: 33%;
+}
+
+#hero.animated {
+    background-repeat: no-repeat;
+    background-size: 1400px;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    animation-timing-function: steps(7);
+    animation-name: hero-animation;
+}
+
+@keyframes hero-animation {
+    100% {
+        background-position-x: -1400px;
+    }
+}
+
+#hero.animated.idle {
+    background-image: url("../src/player-character/player-idle.png");
+
+}
+
+#hero.animated.attack {
+    background-image: url("../src/player-character/player-attack.png");
+    animation-timing-function: steps(6);
+    background-size: 1200px;
+    animation-name: hero-animation-attack;
+}
+
+@keyframes hero-animation-attack {
+    100% {
+        background-position-x: -1200px;
+    }
+}
+
+#hero.animated.hurt {
+    background-image: url("../src/player-character/player-hurt.png");
+    animation-timing-function: steps(4);
+    background-size: 785px;
+    animation-name: hero-animation-hurt;
+    animation-duration: .4s;
+
+
+}
+
+@keyframes hero-animation-hurt {
+    100% {
+        background-position-x: -785px;
+    }
 }

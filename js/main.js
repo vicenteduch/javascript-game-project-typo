@@ -66,6 +66,9 @@ let gameScreen = document.getElementById("game-container")
 let arrowsImg = document.getElementById("arrow-container")
 let playerHp = document.getElementById("playerHP")
 let killCount = document.getElementById("score")
+let hero = document.getElementById("hero")
+
+
 
 //Game mechanics functions//////////////////////////////////////////
 
@@ -132,12 +135,14 @@ function checkInputs(eventKey) {
 
 function wrongInput() {
     enemyIntervalAttack()
+    animateReceivedDamage()
     player.health -= currentEnemy.power
     player.checkPlayerHealth()
     showPlayerHp()
 }
 
 function correctInput() {
+    animateAttack()
     enemyIntervalAttack()
     damageEnemy()
     currentEnemy.checkEnemyHealth()
@@ -151,9 +156,26 @@ function correctInput() {
 
 function damagePlayer() {
     player.health = (player.health - currentEnemy.power)
+    animateReceivedDamage()
     player.checkPlayerHealth()
     showPlayerHp()
 
+}
+
+function animateAttack() {
+    hero.className = "animated attack"
+
+    setTimeout(() => {
+        hero.className = "animated idle"
+    }, 500);
+}
+
+function animateReceivedDamage() {
+    hero.className = "animated hurt"
+
+    setTimeout(() => {
+        hero.className = "animated idle"
+    }, 500);
 }
 
 
@@ -247,7 +269,7 @@ function killEnemy() {
 
 startbutton.addEventListener("click", () => {
 
-    // enemyIntervalAttack()  <-- volver a activar después de testear
+    // enemyIntervalAttack()  <-- desactivado de inicio para dar tiempo al player.
     showScore()
     showPlayerHp()
     showEnemyHp()
