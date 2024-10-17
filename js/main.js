@@ -69,6 +69,10 @@ let killCount = document.getElementById("score")
 let hero = document.getElementById("hero")
 let enemy = document.getElementById("enemy")
 
+let pressKey = new Audio('src/sounds/pressed-key.wav')
+let attack = new Audio('src/sounds/attack-sound.wav')
+let enemyAttack = new Audio('src/sounds/enemy-attack-sound.wav')
+let wrongKey = new Audio('src/sounds/wrong-key.wav')
 
 
 //Game mechanics functions//////////////////////////////////////////
@@ -120,6 +124,7 @@ function showScore() {
 function checkInputs(eventKey) {
 
     if (arrowArr[arrowIndex] === keyMap[eventKey]) {
+        playSound(pressKey)
         arrowIndex++
         showArrows()
         if (arrowIndex === arrowArr.length) {
@@ -128,6 +133,7 @@ function checkInputs(eventKey) {
 
     } else {
         wrongInput()
+        playSound(wrongKey)
         arrowIndex = 0
         showArrows()
     }
@@ -138,6 +144,7 @@ function wrongInput() {
     enemyIntervalAttack()
     animateEnemyAttack()
     animateReceivedDamage()
+    playSound(enemyAttack)
     player.health -= currentEnemy.power
     player.checkPlayerHealth()
     showPlayerHp()
@@ -152,14 +159,20 @@ function correctInput() {
     showEnemyHp()
     getNewSequence()
 }
-//Sounds/////////////////////////////////////////////////////////////
+//Sound functions/////////////////////////////////////////////////////////////
 
 function playMusic() {
     var audio = new Audio('src/sounds/battle.ogg');
-    audio.volume = 0.3;
+    audio.volume = 0.1;
     audio.loop = true
     audio.play();
 
+}
+
+
+function playSound(sound) {
+    sound.volume = 0.2;
+    sound.play();
 }
 
 
@@ -168,6 +181,7 @@ function playMusic() {
 
 function damagePlayer() {
     player.health = (player.health - currentEnemy.power)
+    playSound(enemyAttack)
     animateEnemyAttack()
     animateReceivedDamage()
     player.checkPlayerHealth()
@@ -251,7 +265,7 @@ function animateEnemyReceivedDamage() {
 }
 
 function damageEnemy() {
-
+    playSound(attack)
     currentEnemy.health = (currentEnemy.health - player.power)
 
 }
