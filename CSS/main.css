@@ -371,3 +371,63 @@ h1 {
         background-position-x: -785px;
     }
 }
+
+#enemy {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 48%;
+    right: 37%;
+}
+
+#enemy.animated {
+    background-repeat: no-repeat;
+    background-size: 1400px;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    animation-timing-function: steps(8);
+    animation-name: enemy-animation;
+}
+
+#enemy.animated.idle {
+    background-image: url("../src/enemies/enemy1-idle.png");
+
+}
+
+
+@keyframes enemy-animation {
+    100% {
+        background-position-x: -1400px;
+    }
+}
+
+#enemy.animated.attack {
+    background-image: url(../src/enemies/enemy1-attack.png);
+    animation-timing-function: steps(14);
+    background-size: 2400px;
+    animation-name: enemy-animation-attack;
+    animation-duration: .5s;
+}
+
+@keyframes enemy-animation-attack {
+    100% {
+        background-position-x: -2400px;
+    }
+}
+
+#enemy.animated.hurt {
+    background-image: url("../src/enemies/enemy1-hurt.png");
+    animation-timing-function: steps(5);
+    background-size: 880px;
+    animation-name: enemy-animation-hurt;
+    animation-duration: .45s;
+
+
+}
+
+@keyframes enemy-animation-hurt {
+    100% {
+        background-position-x: -880px;
+    }
+}

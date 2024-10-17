@@ -67,6 +67,7 @@ let arrowsImg = document.getElementById("arrow-container")
 let playerHp = document.getElementById("playerHP")
 let killCount = document.getElementById("score")
 let hero = document.getElementById("hero")
+let enemy = document.getElementById("enemy")
 
 
 
@@ -135,6 +136,7 @@ function checkInputs(eventKey) {
 
 function wrongInput() {
     enemyIntervalAttack()
+    animateEnemyAttack() 
     animateReceivedDamage()
     player.health -= currentEnemy.power
     player.checkPlayerHealth()
@@ -144,6 +146,7 @@ function wrongInput() {
 function correctInput() {
     animateAttack()
     enemyIntervalAttack()
+    animateEnemyReceivedDamage()
     damageEnemy()
     currentEnemy.checkEnemyHealth()
     showEnemyHp()
@@ -156,6 +159,7 @@ function correctInput() {
 
 function damagePlayer() {
     player.health = (player.health - currentEnemy.power)
+    animateEnemyAttack()
     animateReceivedDamage()
     player.checkPlayerHealth()
     showPlayerHp()
@@ -219,6 +223,22 @@ function enemyIntervalAttack() {
         damagePlayer()
         enemyIntervalAttack()
     }, 3000)
+}
+
+function animateEnemyAttack() {
+    enemy.className = "animated attack"
+
+    setTimeout(() => {
+        enemy.className = "animated idle"
+    }, 500);
+}
+
+function animateEnemyReceivedDamage() {
+    enemy.className = "animated hurt"
+
+    setTimeout(() => {
+        enemy.className = "animated idle"
+    }, 500);
 }
 
 function damageEnemy() {
