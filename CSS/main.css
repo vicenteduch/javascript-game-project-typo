@@ -445,7 +445,7 @@ h1 {
 #enemy.animated.die {
     background-image: url("../src/enemies/enemy1-die.png");
     animation-timing-function: steps(14);
-    background-size: 2000px;
+    background-size: 2400px;
     animation-name: enemy-animation-die;
     animation-duration: .5s;
 
@@ -454,6 +454,6 @@ h1 {
 
 @keyframes enemy-animation-die {
     100% {
-        background-position-x: -2000px;
+        background-position-x: -2400px;
     }
 }
