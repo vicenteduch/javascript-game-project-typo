@@ -135,11 +135,11 @@ h1 {
 
 #platform {
     background-image: url(../src/base-platform.png);
-    display: flex;
+    display: block;
     position: absolute;
     width: 40%;
     height: 30%;
-    top: 60%;
+    bottom: 12%;
     left: 30%;
     background-size: contain;
     background-repeat: no-repeat;
