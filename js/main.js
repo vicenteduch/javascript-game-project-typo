@@ -1,4 +1,4 @@
-//classes
+////CLASSES////
 
 class Enemy {
     constructor() {
@@ -27,17 +27,14 @@ class Player {
     }
 }
 
-//Variables
+////VARIABLES////
 
 let score = 0
-
 const enemyArr = []
-
 let arrowArr = []
-
 const player = new Player()
-
 let currentEnemy = new Enemy()
+currentEnemy = new Enemy()
 
 const keyMap = {
     ArrowUp: 0,
@@ -54,129 +51,25 @@ const arrowImages = {
 }
 
 const controls = ["ArrowUp", "ArrowDown", "ArrowRight", "ArrowLeft"]
-
 const playerInput = []
-
-currentEnemy = new Enemy()
-
 let arrowIndex = 0
-let startbutton = document.getElementById("start-button")
-let mainMenu = document.getElementById("main-container")
-let gameScreen = document.getElementById("game-container")
-let arrowsImg = document.getElementById("arrow-container")
-let playerHp = document.getElementById("playerHP")
-let killCount = document.getElementById("score")
-let hero = document.getElementById("hero")
-let enemy = document.getElementById("enemy")
+const startbutton = document.getElementById("start-button")
+const mainMenu = document.getElementById("main-container")
+const gameScreen = document.getElementById("game-container")
+const arrowsImg = document.getElementById("arrow-container")
+const playerHp = document.getElementById("playerHP")
+const killCount = document.getElementById("score")
+const hero = document.getElementById("hero")
+const enemy = document.getElementById("enemy")
 
-let pressKey = new Audio('src/sounds/pressed-key.wav')
-let attack = new Audio('src/sounds/attack-sound.wav')
-let enemyAttack = new Audio('src/sounds/enemy-attack-sound.wav')
-let wrongKey = new Audio('src/sounds/wrong-key.wav')
-
-
-//Game mechanics functions//////////////////////////////////////////
-
-function getNewSequence() {
-    arrowArr = []
-    let arraylength = (4 + Math.floor(score / 3))
-    for (let i = 0; i < arraylength; i++) {
-        arrowArr.push(Math.floor(Math.random() * 4))
-
-    }
-    arrowIndex = 0
-    showArrows()
-}
-
-function showArrows() {
-    arrowsImg.innerHTML = ""
-    arrowsImg.className = "fade-in"
-    arrowArr.forEach((value, i) => {
-        const img = document.createElement("img")
-
-        if (i === arrowIndex) {
-            img.src = `${arrowImages[value]}_active.png`
-        } else if (i < arrowIndex) {
-            img.src = `${arrowImages[value]}_true.png`
-            img.style.opacity = `50`
-        } else {
-            img.src = `${arrowImages[value]}.png`
-        }
-
-        arrowsImg.appendChild(img)
-    })
-}
-
-function showScore() {
-    let killCount = document.getElementById("score")
-    let playerScore = document.getElementById("playerScore")
-
-    if (!playerScore) {
-        playerScore = document.createElement("h2")
-        playerScore.id = "playerScore"
-        playerScore.style.color = "white"
-        killCount.appendChild(playerScore)
-    }
-
-    playerScore.innerText = `x ${score}`
-}
-
-function checkInputs(eventKey) {
-
-    if (arrowArr[arrowIndex] === keyMap[eventKey]) {
-        playSound(pressKey)
-        arrowIndex++
-        showArrows()
-        if (arrowIndex === arrowArr.length) {
-            correctInput()
-        }
-
-    } else {
-        wrongInput()
-        playSound(wrongKey)
-        arrowIndex = 0
-        showArrows()
-    }
-}
+const pressKey = new Audio('src/sounds/pressed-key.wav')
+const attack = new Audio('src/sounds/attack-sound.wav')
+const enemyAttack = new Audio('src/sounds/enemy-attack-sound.wav')
+const wrongKey = new Audio('src/sounds/wrong-key.wav')
+const enemyDie = new Audio('src/sounds/enemy-die.wav')
 
 
-function wrongInput() {
-    enemyIntervalAttack()
-    animateEnemyAttack()
-    animateReceivedDamage()
-    playSound(enemyAttack)
-    player.health -= currentEnemy.power
-    player.checkPlayerHealth()
-    showPlayerHp()
-}
-
-function correctInput() {
-    animateAttack()
-    enemyIntervalAttack()
-    animateEnemyReceivedDamage()
-    damageEnemy()
-    currentEnemy.checkEnemyHealth()
-    showEnemyHp()
-    getNewSequence()
-}
-//Sound functions/////////////////////////////////////////////////////////////
-
-function playMusic() {
-    var audio = new Audio('src/sounds/battle.ogg');
-    audio.volume = 0.05;
-    audio.loop = true
-    audio.play();
-
-}
-
-
-function playSound(sound) {
-    sound.volume = 0.2;
-    sound.play();
-}
-
-
-//Player functions//////////////////////////////////////////////////
+////PLAYER FUNCTIONALITY////
 
 
 function damagePlayer() {
@@ -194,7 +87,7 @@ function animateAttack() {
 
     setTimeout(() => {
         hero.className = "animated idle"
-    }, 500);
+    }, 500)
 }
 
 function animateReceivedDamage() {
@@ -202,7 +95,7 @@ function animateReceivedDamage() {
 
     setTimeout(() => {
         hero.className = "animated idle"
-    }, 500);
+    }, 500)
 }
 
 
@@ -226,7 +119,7 @@ function showPlayerHp() {
     remainingHp.innerText = `${player.health} HP`
 }
 
-// Enemy functions/////////////////////////////////////////////
+////ENEMY FUNCTIONALITY////
 
 function generateNewEnemy() {
     const newEnemy = new Enemy()
@@ -253,7 +146,15 @@ function animateEnemyAttack() {
 
     setTimeout(() => {
         enemy.className = "animated idle"
-    }, 500);
+    }, 500)
+}
+
+function animateEnemyDeath() {
+    enemy.className = "animated die"
+
+    setTimeout(()=> {
+        enemy.className = "animated idle"
+    }, 1000)
 }
 
 function animateEnemyReceivedDamage() {
@@ -261,7 +162,7 @@ function animateEnemyReceivedDamage() {
 
     setTimeout(() => {
         enemy.className = "animated idle"
-    }, 500);
+    }, 500)
 }
 
 function damageEnemy() {
@@ -300,6 +201,8 @@ function showEnemyDmg() {
 
 function killEnemy() {
     score++
+    playSound(enemyDie)
+    animateEnemyDeath()
     showScore()
     enemyArr.pop()
     generateNewEnemy()
@@ -308,11 +211,16 @@ function killEnemy() {
 
 }
 
-//Event Listeners
+//// EVENTS ////
 
-startbutton.addEventListener("click", () => {
+document.addEventListener('keydown', function (event) {
+    if (controls.includes(event.key)) {
+        checkInputs(event.key)
+    }
+})
 
-    // enemyIntervalAttack()  <-- desactivado de inicio para dar tiempo al player.
+
+startbutton.addEventListener("click", () => {  // Game Start
     playMusic()
     showScore()
     showPlayerHp()
@@ -324,11 +232,7 @@ startbutton.addEventListener("click", () => {
 
 })
 
-document.addEventListener('keydown', function (event) {
-    if (controls.includes(event.key)) {
-        checkInputs(event.key)
-    }
-})
+
 
 
 

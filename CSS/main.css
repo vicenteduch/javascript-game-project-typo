@@ -1,3 +1,5 @@
+/*//// GENERAL AND FONTS ////*/
+
 * {
     margin: 0;
     padding: 0;
@@ -20,11 +22,13 @@ body {
     background-color: rgb(15, 15, 15);
 }
 
-
 h1 {
     color: white;
     font-family: "Press Start 2P"
 }
+
+
+/*//// MAIN MENU ////*/
 
 #main-container {
     background-image: url(../src/MainBackground.jpg);
@@ -32,17 +36,18 @@ h1 {
     justify-items: center;
 }
 
-#game-container {
-    display: none;
-    background-image: url(../src/MainBackground2.jpg);
-}
-
-#game-container img {
-    margin-right: 5px;
-}
-
-#gameOver-container {
-    background-image: url(../src/gameover-background2.jpg)
+.background-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-position-y: 65%;
+    position: absolute;
+    margin: 0;
+    top: 0;
+    left: 0
 }
 
 #main-title {
@@ -67,20 +72,6 @@ h1 {
     font-family: "Pixelify Sans", sans-serif
 }
 
-.background-container {
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position-x: 50%;
-    background-position-y: 65%;
-    position: absolute;
-    margin: 0;
-    top: 0;
-    left: 0
-}
-
 #howToPlay {
     display: flex;
     position: relative;
@@ -96,6 +87,17 @@ h1 {
     border-radius: 10px;
 }
 
+/*//// GAME SCREEN ////*/
+
+#game-container {
+    display: none;
+    background-image: url(../src/MainBackground2.jpg);
+}
+
+#game-container img {
+    margin-right: 5px;
+}
+
 #arrow-container {
     position: absolute;
     display: flex;
@@ -105,11 +107,25 @@ h1 {
     min-width: 100%;
 }
 
+#platform {
+    background-image: url(../src/base-platform.png);
+    display: block;
+    position: absolute;
+    width: 40%;
+    height: 30%;
+    bottom: 12%;
+    left: 30%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 
 #arrow-container img {
     width: 10%;
     height: auto;
 }
+
+
+/*SCORE*/
 
 #score {
     display: flex;
@@ -133,18 +149,92 @@ h1 {
 
 }
 
-#platform {
-    background-image: url(../src/base-platform.png);
-    display: block;
-    position: absolute;
-    width: 40%;
-    height: 30%;
-    bottom: 12%;
-    left: 30%;
-    background-size: contain;
-    background-repeat: no-repeat;
+
+#gameOver-container {
+    background-image: url(../src/gameover-background2.jpg)
 }
 
+/* PLAYER AND ENEMY */
+
+#playerHP {
+    display: flex;
+    position: absolute;
+    bottom: 15%;
+    left: 5%;
+    align-items: center;
+    flex-direction: row
+}
+
+#playerHP h2 {
+    font-size: 2rem;
+    font-family: "Press Start 2P"
+
+}
+
+#playerHP img {
+    width: 50px;
+}
+
+#playerDmg {
+    display: flex;
+    position: absolute;
+    bottom: 8%;
+    left: 5%;
+    align-items: center
+}
+
+#playerDmg h2 {
+    font-size: 2rem;
+    font-family: "Press Start 2P";
+    color: white
+}
+
+#playerDmg img {
+    width: 50px;
+    margin-right: 15px;
+}
+
+#enemyHP {
+    display: flex;
+    position: absolute;
+    bottom: 15%;
+    right: 5%;
+    align-items: center;
+    flex-direction: row;
+
+}
+
+#enemyHP img {
+    width: 50px;
+    padding-bottom: 10px;
+    margin-right: 10px;
+}
+
+#enemyHP h2 {
+    font-size: 2rem;
+    font-family: "Press Start 2P"
+}
+
+#enemyDmg {
+    display: flex;
+    position: absolute;
+    bottom: 8%;
+    right: 7%;
+    align-items: center
+}
+
+#enemyDmg h2 {
+    font-size: 2rem;
+    font-family: "Press Start 2P"
+}
+
+#enemyDmg img {
+    width: 50px;
+    margin-right: 15px;
+}
+
+
+/*GAMEOVER*/
 
 
 #gameOver {
@@ -168,6 +258,10 @@ h1 {
     cursor: pointer;
     border-radius: 10px;
 }
+
+
+/*ANIMATIONS*/
+
 
 .fade-in {
     animation: fadeIn ease 2s;
@@ -227,92 +321,6 @@ h1 {
     }
 }
 
-
-
-#playerHP {
-    display: flex;
-    position: absolute;
-    bottom: 15%;
-    left: 5%;
-    align-items: center;
-    flex-direction: row
-}
-
-#playerHP h2 {
-    font-size: 2rem;
-    font-family: "Press Start 2P"
-
-}
-
-#playerDmg {
-    display: flex;
-    position: absolute;
-    bottom: 8%;
-    left: 5%;
-    align-items: center
-}
-
-#playerDmg h2 {
-    font-size: 2rem;
-    font-family: "Press Start 2P";
-    color: white
-}
-
-#playerDmg img {
-    width: 50px;
-    margin-right: 15px;
-}
-
-
-
-#playerHP img {
-    width: 50px;
-}
-
-#enemyHP {
-    display: flex;
-    position: absolute;
-    bottom: 15%;
-    right: 5%;
-    align-items: center;
-    flex-direction: row;
-
-}
-
-#enemyHP img {
-    width: 50px;
-    padding-bottom: 10px;
-    margin-right: 10px;
-}
-
-#enemyHP h2 {
-    font-size: 2rem;
-    font-family: "Press Start 2P"
-}
-
-#countdown {
-    display: flex;
-    color: white;
-
-}
-
-#enemyDmg {
-    display: flex;
-    position: absolute;
-    bottom: 8%;
-    right: 7%;
-    align-items: center
-}
-
-#enemyDmg h2 {
-    font-size: 2rem;
-    font-family: "Press Start 2P"
-}
-
-#enemyDmg img {
-    width: 50px;
-    margin-right: 15px;
-}
 
 #hero {
     position: absolute;
@@ -431,5 +439,21 @@ h1 {
 @keyframes enemy-animation-hurt {
     100% {
         background-position-x: -880px;
+    }
+}
+
+#enemy.animated.die {
+    background-image: url("../src/enemies/enemy1-die.png");
+    animation-timing-function: steps(14);
+    background-size: 2000px;
+    animation-name: enemy-animation-die;
+    animation-duration: .5s;
+
+
+}
+
+@keyframes enemy-animation-die {
+    100% {
+        background-position-x: -2000px;
     }
 }
