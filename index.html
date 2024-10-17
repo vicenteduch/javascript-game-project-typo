@@ -14,13 +14,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
 
     <div id="main-container" class="background-container">
-        <h1 id="main-title">The cave of the Typomancer</h1>
+        <h1 id="main-title">Cave of the Typomancer</h1>
         <button id="start-button" type="button">Enter the cave!</button>
         <h1 id="howToPlay">How to play </h1>
         <p>The goal is to defeat enemies by following arrow sequences. Use the arrow keys (↑, ↓, ←, →) to match the
@@ -34,9 +37,14 @@
     <div id="game-container" class="background-container">
         <div id="score"><img src="./src/score-img.png"></div>
         <div id="countdown"></div>
+        <div id="playerDmg">
+            <img src="./src/Sword.png">
+            <h2>x 2 </h2>
+        </div>
         <div id="playerHP">
             <div id="playerHpImg"><img src="./src/life-counter-img.png"></div>
         </div>
+        <div id="enemyDmg"><img src="./src/Sword.png"></div>
         <div id="enemyHP"><img src="./src/enemy-health-counter.png"></div>
     </div>
 

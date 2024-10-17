@@ -57,10 +57,6 @@ const controls = ["ArrowUp", "ArrowDown", "ArrowRight", "ArrowLeft"]
 
 const playerInput = []
 
-
-
-
-
 currentEnemy = new Enemy()
 
 let arrowIndex = 0
@@ -135,6 +131,7 @@ function checkInputs(eventKey) {
 
 
 function wrongInput() {
+    enemyIntervalAttack()
     player.health -= currentEnemy.power
     player.checkPlayerHealth()
     showPlayerHp()
@@ -222,12 +219,27 @@ function showEnemyHp() {
     enemyRemainingHp.innerText = `${currentEnemy.health} HP`
 }
 
+function showEnemyDmg() {
+    let enemyDmgCounter = document.getElementById("enemyDmg")
+    let currentEnemyDmg = document.getElementById("currentEnemyDmg")
+
+    if (!currentEnemyDmg) {
+        currentEnemyDmg = document.createElement("h2")
+        currentEnemyDmg.id = "currentEnemyDmg"
+        currentEnemyDmg.style.color = "white"
+        enemyDmgCounter.appendChild(currentEnemyDmg)
+    }
+
+    currentEnemyDmg.innerText = `x ${currentEnemy.power}`
+}
+
 function killEnemy() {
     score++
     showScore()
     enemyArr.pop()
     generateNewEnemy()
     showEnemyHp()
+    showEnemyDmg()
 
 }
 
@@ -239,6 +251,7 @@ startbutton.addEventListener("click", () => {
     showScore()
     showPlayerHp()
     showEnemyHp()
+    showEnemyDmg()
     getNewSequence()
     mainMenu.style.display = "none"
     gameScreen.style.display = "flex"
