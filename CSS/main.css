@@ -318,6 +318,7 @@ h1 {
     position: absolute;
     width: 230px;
     height: 150px;
+    bottom: 0;
     top: 46%;
     left: 33%;
 }
@@ -377,6 +378,7 @@ h1 {
     width: 150px;
     height: 150px;
     top: 48%;
+    bottom: 0;
     right: 37%;
 }
 

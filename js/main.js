@@ -136,7 +136,7 @@ function checkInputs(eventKey) {
 
 function wrongInput() {
     enemyIntervalAttack()
-    animateEnemyAttack() 
+    animateEnemyAttack()
     animateReceivedDamage()
     player.health -= currentEnemy.power
     player.checkPlayerHealth()
@@ -151,6 +151,15 @@ function correctInput() {
     currentEnemy.checkEnemyHealth()
     showEnemyHp()
     getNewSequence()
+}
+//Sounds/////////////////////////////////////////////////////////////
+
+function playMusic() {
+    var audio = new Audio('src/sounds/battle.ogg');
+    audio.volume = 0.3;
+    audio.loop = true
+    audio.play();
+
 }
 
 
@@ -290,6 +299,7 @@ function killEnemy() {
 startbutton.addEventListener("click", () => {
 
     // enemyIntervalAttack()  <-- desactivado de inicio para dar tiempo al player.
+    playMusic()
     showScore()
     showPlayerHp()
     showEnemyHp()
