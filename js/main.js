@@ -16,7 +16,7 @@ class Enemy {
 
 class Player {
     constructor() {
-        this.health = 10
+        this.health = 20
         this.power = 2
     }
 
@@ -163,7 +163,7 @@ function correctInput() {
 
 function playMusic() {
     var audio = new Audio('src/sounds/battle.ogg');
-    audio.volume = 0.1;
+    audio.volume = 0.05;
     audio.loop = true
     audio.play();
 
@@ -245,7 +245,7 @@ function enemyIntervalAttack() {
     enemyTimer = setTimeout(() => {
         damagePlayer()
         enemyIntervalAttack()
-    }, 3000)
+    }, 2500)
 }
 
 function animateEnemyAttack() {
