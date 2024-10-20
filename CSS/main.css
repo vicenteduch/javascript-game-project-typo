@@ -51,42 +51,37 @@ h1 {
 }
 
 #main-title {
-    top: 5%;
+    top: 5vh;
     font-family: "Press Start 2P"
 
 }
 
 #main-container h1 {
-    left: 5%;
-    bottom: 30%;
+    left: 1vw;
+    bottom: 27vh;
     position: absolute;
 }
 
 #main-container p {
-    font-size: 1.2rem;
-    left: 5%;
-    bottom: 10%;
+    font-size: 1.5vw;
+    left: 5vw;
+    bottom: 10vh;
     position: absolute;
     color: white;
-    width: 600px;
+    width: 50vw;
     font-family: "Pixelify Sans", sans-serif
 }
 
 
-#howToPlay {
+#howToPlay, #start-button {
     display: flex;
     position: relative;
     margin: auto;
+    padding: 2vh 4vw;
+    cursor: pointer;
+    border-radius: 1vh;
 }
 
-#start-button {
-    display: flex;
-    position: relative;
-    margin: auto;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 10px;
-}
 
 /*//// GAME SCREEN ////*/
 
@@ -104,24 +99,24 @@ h1 {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    top: 20%;
-    min-width: 100%;
+    top: 20vh;
+    min-width: 100vw;
 }
 
 #platform {
     background-image: url(../src/base-platform.png);
     display: block;
     position: absolute;
-    width: 40%;
-    height: 30%;
-    bottom: 12%;
-    left: 30%;
+    width: 40vw;
+    height: 30vh;
+    bottom: 12vh;
+    left: 30vw;
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 #arrow-container img {
-    width: 10%;
+    width: 10vw;
     height: auto;
 }
 
@@ -131,8 +126,8 @@ h1 {
 #score {
     display: flex;
     position: absolute;
-    top: 10%;
-    left: 5%;
+    top: 10vh;
+    left: 5vw;
     align-items: center;
     flex-direction: row;
     font-family: "Press Start 2P"
@@ -141,12 +136,12 @@ h1 {
 
 #score h2 {
 
-    font-size: 2rem
+    font-size: 2vw;
 }
 
 #score img {
 
-    width: 80px;
+    width: 4vw;
 
 }
 
@@ -159,23 +154,31 @@ h1 {
 
 /* PLAYER AND ENEMY */
 
-#playerHP {
+#playerHP, #enemyHP, #playerDmg, #enemyDmg {
     display: flex;
     position: absolute;
-    bottom: 15%;
-    left: 5%;
     align-items: center;
-    flex-direction: row
+    flex-direction: row;
 }
 
-#playerHP h2 {
-    font-size: 2rem;
-    font-family: "Press Start 2P"
-
+#playerHP {
+    bottom: 15vh;
+    left: 5vw;
 }
 
-#playerHP img {
-    width: 50px;
+#enemyHP {
+    bottom: 15vh;
+    right: 5vw;
+}
+
+#playerHP h2, #enemyHP h2 {
+    font-size: 2vw;
+    font-family: "Press Start 2P";
+}
+
+#playerHP img, #enemyHP img, #playerDmg img, #enemyDmg img {
+    width: 4vw;
+    margin-right: 1vw;
 }
 
 #playerDmg {
@@ -183,39 +186,13 @@ h1 {
     position: absolute;
     bottom: 8%;
     left: 5%;
-    align-items: center
+    align-items: center;
 }
 
 #playerDmg h2 {
-    font-size: 2rem;
+    font-size: 2vw;
     font-family: "Press Start 2P";
     color: white
-}
-
-#playerDmg img {
-    width: 50px;
-    margin-right: 15px;
-}
-
-#enemyHP {
-    display: flex;
-    position: absolute;
-    bottom: 15%;
-    right: 5%;
-    align-items: center;
-    flex-direction: row;
-
-}
-
-#enemyHP img {
-    width: 50px;
-    padding-bottom: 10px;
-    margin-right: 10px;
-}
-
-#enemyHP h2 {
-    font-size: 2rem;
-    font-family: "Press Start 2P"
 }
 
 #enemyDmg {
@@ -227,13 +204,8 @@ h1 {
 }
 
 #enemyDmg h2 {
-    font-size: 2rem;
+    font-size: 2vw;
     font-family: "Press Start 2P"
-}
-
-#enemyDmg img {
-    width: 50px;
-    margin-right: 15px;
 }
 
 
@@ -246,26 +218,24 @@ h1 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    top: 5%;
+    width: 100vw;
+    top: 5vh;
     transition: 1s;
 }
 
 #gameOver img {
-    width: 25%;
-    margin-bottom: 7%;
+    width: 25vw;
+    margin-bottom: 7vh;
 
 
 }
 
 #gameOver button {
-    padding: 10px 20px;
+    position: relative;
+    padding: 2vh 4vw;
     cursor: pointer;
-    border-radius: 10px;
-    z-index: 50;
+    border-radius: 1vh;
 }
-
-
 
 /*ANIMATIONS*/
 
@@ -396,8 +366,8 @@ h1 {
     animation-duration: 2s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
-    left: 44%;
-    top: 65%;
+    left: 42vw;
+    top: 65vh;
     height:130px;
 }
 
@@ -474,9 +444,7 @@ h1 {
     background-size: 2400px;
     animation-name: enemy-animation-die;
     animation-duration: .5s;
-    
-    
-
+    position: ;
 }
 
 @keyframes enemy-animation-die {
