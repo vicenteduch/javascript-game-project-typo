@@ -34,6 +34,7 @@ h1 {
     background-image: url(../src/MainBackground.jpg);
     align-items: center;
     justify-items: center;
+    width: 100%;
 }
 
 .background-container {
@@ -51,14 +52,14 @@ h1 {
 }
 
 #main-title {
-    top: 5vh;
-    font-family: "Press Start 2P"
-
+    top: 8vh;
+    font-family: "Press Start 2P";
+    width: 100%;    
 }
 
 #main-container h1 {
     left: 1vw;
-    bottom: 27vh;
+    bottom: 32vh;
     position: absolute;
 }
 
