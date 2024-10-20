@@ -6,7 +6,7 @@ addEventListener("DOMContentLoaded", function () {
 })
 
 function gameoverMusic() {
-    var audio = new Audio('src/sounds/gameover-music.ogg')
+    var audio = new Audio('media/sounds/gameover-music.ogg')
     audio.volume = 0.2
     audio.loop = true
     audio.play()

@@ -86,7 +86,7 @@ function correctInput() {
 ////SOUNDS////
 
 function playMusic() {
-    var audio = new Audio('src/sounds/battle.ogg')
+    var audio = new Audio('media/sounds/battle.ogg')
     audio.volume = 0.05
     audio.loop = true
     audio.play()

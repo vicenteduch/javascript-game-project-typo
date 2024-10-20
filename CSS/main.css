@@ -31,7 +31,7 @@ h1 {
 /*//// MAIN MENU ////*/
 
 #main-container {
-    background-image: url(../src/MainBackground.jpg);
+    background-image: url(../media/MainBackground.jpg);
     align-items: center;
     justify-items: center;
     width: 100%;
@@ -88,7 +88,7 @@ h1 {
 
 #game-container {
     display: none;
-    background-image: url(../src/MainBackground2.jpg);
+    background-image: url(../media/MainBackground2.jpg);
 }
 
 #game-container img {
@@ -105,7 +105,7 @@ h1 {
 }
 
 #platform {
-    background-image: url(../src/base-platform.png);
+    background-image: url(../media/base-platform.png);
     display: block;
     position: absolute;
     width: 40vw;
@@ -326,12 +326,12 @@ h1 {
 }
 
 #hero.animated.idle {
-    background-image: url("../src/player-character/player-idle.png");
+    background-image: url("../media/player-character/player-idle.png");
 
 }
 
 #hero.animated.attack {
-    background-image: url("../src/player-character/player-attack.png");
+    background-image: url("../media/player-character/player-attack.png");
     animation-timing-function: steps(6);
     background-size: 1200px;
     animation-name: hero-animation-attack;
@@ -344,7 +344,7 @@ h1 {
 }
 
 #hero.animated.hurt {
-    background-image: url("../src/player-character/player-hurt.png");
+    background-image: url("../media/player-character/player-hurt.png");
     animation-timing-function: steps(4);
     background-size: 785px;
     animation-name: hero-animation-hurt;
@@ -360,7 +360,7 @@ h1 {
 }
 
 #hero.animated.die {
-    background-image: url("../src/player-character/player-death.png");
+    background-image: url("../media/player-character/player-death.png");
     animation-timing-function: steps(11);
     background-size: 2400px;
     animation-name: hero-animation-die;
@@ -398,7 +398,7 @@ h1 {
 }
 
 #enemy.animated.idle {
-    background-image: url("../src/enemies/enemy1-idle.png");
+    background-image: url("../media/enemies/enemy1-idle.png");
 
 }
 
@@ -410,7 +410,7 @@ h1 {
 }
 
 #enemy.animated.attack {
-    background-image: url(../src/enemies/enemy1-attack.png);
+    background-image: url(../media/enemies/enemy1-attack.png);
     animation-timing-function: steps(14);
     background-size: 2400px;
     animation-name: enemy-animation-attack;
@@ -424,7 +424,7 @@ h1 {
 }
 
 #enemy.animated.hurt {
-    background-image: url("../src/enemies/enemy1-hurt.png");
+    background-image: url("../media/enemies/enemy1-hurt.png");
     animation-timing-function: steps(5);
     background-size: 880px;
     animation-name: enemy-animation-hurt;
@@ -440,12 +440,11 @@ h1 {
 }
 
 #enemy.animated.die {
-    background-image: url("../src/enemies/enemy1-die.png");
+    background-image: url("../media/enemies/enemy1-die.png");
     animation-timing-function: steps(14);
     background-size: 2400px;
     animation-name: enemy-animation-die;
     animation-duration: .5s;
-    position: ;
 }
 
 @keyframes enemy-animation-die {

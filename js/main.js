@@ -44,10 +44,10 @@ const keyMap = {
 }
 
 const arrowImages = {
-    0: "./src/arrow-up",
-    1: "./src/arrow-down",
-    2: "./src/arrow-left",
-    3: "./src/arrow-right"
+    0: "./media/arrow-up",
+    1: "./media/arrow-down",
+    2: "./media/arrow-left",
+    3: "./media/arrow-right"
 }
 
 const controls = ["ArrowUp", "ArrowDown", "ArrowRight", "ArrowLeft"]
@@ -62,11 +62,11 @@ const killCount = document.getElementById("score")
 const hero = document.getElementById("hero")
 const enemy = document.getElementById("enemy")
 
-const pressKey = new Audio('src/sounds/pressed-key.wav')
-const attack = new Audio('src/sounds/attack-sound.wav')
-const enemyAttack = new Audio('src/sounds/enemy-attack-sound.wav')
-const wrongKey = new Audio('src/sounds/wrong-key.wav')
-const enemyDie = new Audio('src/sounds/enemy-die.wav')
+const pressKey = new Audio('media/sounds/pressed-key.wav')
+const attack = new Audio('media/sounds/attack-sound.wav')
+const enemyAttack = new Audio('media/sounds/enemy-attack-sound.wav')
+const wrongKey = new Audio('media/sounds/wrong-key.wav')
+const enemyDie = new Audio('media/sounds/enemy-die.wav')
 
 
 ////PLAYER FUNCTIONALITY////
