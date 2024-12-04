@@ -1,8 +1,12 @@
 /*//// GAME SCREEN ////*/
 
 #game-container {
-    display: none;
+    display:none ;
     background-image: url(../media/MainBackground2.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
 }
 
 #game-container img {

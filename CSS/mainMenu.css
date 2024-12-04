@@ -1,55 +1,61 @@
 #main-container {
-    background-image: url(../media/MainBackground.jpg);
-    align-items: center;
-    justify-items: center;
-    width: 100%;
-}
-
-.background-container {
     display: flex;
-    width: 100vw;
+    flex-direction: column;
+    align-content: space-around;
+    align-items: center;
     height: 100vh;
+    background-image: url(../media/MainBackground.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    background-position-x: 50%;
-    background-position-y: 65%;
-    position: absolute;
+    background-position: 50% 65%;
+    width: 100%;
     margin: 0;
-    top: 0;
-    left: 0
+    overflow: hidden;
 }
 
 #main-title {
-    top: 2vh;
-    font-family: "Honk", system-ui;
-    font-size: 8rem;
-    width: 100%;
-    text-align: center;
-}
-
-#main-container h1 {
-    left: 1vw;
-    bottom: 32vh;
-    position: absolute;
-}
-
-#main-container p {
-    font-size: 1.5vw;
-    left: 5vw;
-    bottom: 10vh;
-    position: absolute;
+    font-family: "Press Start 2P", system-ui;
+    font-size: 4rem;
     color: white;
-    width: 50vw;
-    font-family: "Pixelify Sans", sans-serif
+    margin: 2rem 0 2rem 0; 
+    width: 100%;  
 }
 
-
-#howToPlay,
-#start-button {
-    display: flex;
+.start-game {
     position: relative;
-    margin: auto;
-    padding: 2vh 4vw;
-    cursor: pointer;
-    border-radius: 1vh;
+    color: white;
+    font-family: "Press Start 2P", system-ui;
+    font-size: 1.2rem;
+    text-align: center;
+    top: 25vh;
+    opacity: 1;
+    animation: fade 1s linear infinite;
+    width: auto;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.instructions {
+    color: white;
+    font-family: "Press Start 2P", system-ui;
+    font-size: 1.1em;
+    border: 3px solid rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.479);
+    padding: 2rem;
+    margin: 0 0 2rem 2rem;  
+    position: absolute;
+    bottom: 0;  
+    left: 0;
+    width: 48vw;
+    height: 30vh;  
+    line-height: 1.6em;
+}
+
+.instructions p {
+    margin-top: 2rem;
+}
+
+@keyframes fade {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
 }
