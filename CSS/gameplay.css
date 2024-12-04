@@ -1,0 +1,66 @@
+/*//// GAME SCREEN ////*/
+
+#game-container {
+    display: none;
+    background-image: url(../media/MainBackground2.jpg);
+}
+
+#game-container img {
+    margin-right: 5px;
+}
+
+#arrow-container {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    top: 20vh;
+    min-width: 100vw;
+}
+
+#platform {
+    background-image: url(../media/base-platform.png);
+    display: block;
+    position: absolute;
+    width: 40vw;
+    height: 30vh;
+    bottom: 12vh;
+    left: 30vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#arrow-container img {
+    width: 10vw;
+    height: auto;
+}
+
+/*SCORE*/
+
+#score {
+    display: flex;
+    position: absolute;
+    top: 10vh;
+    left: 5vw;
+    align-items: center;
+    flex-direction: row;
+    font-family: "Press Start 2P"
+
+}
+
+#score h2 {
+
+    font-size: 2givw;
+}
+
+#score img {
+
+    width: 4vw;
+
+}
+
+#total-score {
+    font-family: "Press Start 2P";
+    color: white;
+    margin-top: 3%;
+}

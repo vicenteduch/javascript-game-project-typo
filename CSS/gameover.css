@@ -1,0 +1,24 @@
+#gameOver {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    top: 5vh;
+    transition: 1s;
+}
+
+#gameOver img {
+    width: 25vw;
+    margin-bottom: 7vh;
+
+
+}
+
+#gameOver button {
+    position: relative;
+    padding: 2vh 4vw;
+    cursor: pointer;
+    border-radius: 1vh;
+}

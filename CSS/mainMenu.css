@@ -1,0 +1,53 @@
+#main-container {
+    background-image: url(../media/MainBackground.jpg);
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+}
+
+.background-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-position-y: 65%;
+    position: absolute;
+    margin: 0;
+    top: 0;
+    left: 0
+}
+
+#main-title {
+    top: 8vh;
+    font-family: "Press Start 2P";
+    width: 100%;
+}
+
+#main-container h1 {
+    left: 1vw;
+    bottom: 32vh;
+    position: absolute;
+}
+
+#main-container p {
+    font-size: 1.5vw;
+    left: 5vw;
+    bottom: 10vh;
+    position: absolute;
+    color: white;
+    width: 50vw;
+    font-family: "Pixelify Sans", sans-serif
+}
+
+
+#howToPlay,
+#start-button {
+    display: flex;
+    position: relative;
+    margin: auto;
+    padding: 2vh 4vw;
+    cursor: pointer;
+    border-radius: 1vh;
+}

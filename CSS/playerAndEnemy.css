@@ -1,0 +1,54 @@
+#playerHP, #enemyHP, #playerDmg, #enemyDmg {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    flex-direction: row;
+}
+
+#playerHP {
+    bottom: 15vh;
+    left: 5vw;
+}
+
+#enemyHP {
+    bottom: 15vh;
+    right: 5vw;
+}
+
+#playerHP h2, #enemyHP h2 {
+    font-size: 2vw;
+    font-family: "Press Start 2P";
+}
+
+#playerHP img, #enemyHP img, #playerDmg img, #enemyDmg img {
+    width: 4vw;
+    margin-right: 1vw;
+}
+
+#playerDmg {
+    display: flex;
+    position: absolute;
+    bottom: 8%;
+    left: 5%;
+    align-items: center;
+}
+
+#playerDmg h2 {
+    font-size: 2vw;
+    font-family: "Press Start 2P";
+    color: white
+}
+
+#enemyDmg {
+    display: flex;
+    position: absolute;
+    bottom: 8%;
+    right: 7%;
+    align-items: center
+}
+
+#enemyDmg h2 {
+    font-size: 2vw;
+    font-family: "Press Start 2P"
+}
+
