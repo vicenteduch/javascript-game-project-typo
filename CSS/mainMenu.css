@@ -20,9 +20,11 @@
 }
 
 #main-title {
-    top: 8vh;
-    font-family: "Press Start 2P";
+    top: 2vh;
+    font-family: "Honk", system-ui;
+    font-size: 8rem;
     width: 100%;
+    text-align: center;
 }
 
 #main-container h1 {
