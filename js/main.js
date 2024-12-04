@@ -29,6 +29,7 @@ class Player {
 
 ////VARIABLES////
 
+let gameStarted = false;
 let score = 0
 const enemyArr = []
 let arrowArr = []
@@ -218,25 +219,30 @@ function killEnemy() {
 //// EVENTS ////
 
 document.addEventListener('keydown', function (event) {
-    if (controls.includes(event.key)) {
-        checkInputs(event.key)
+    if (!gameStarted) {
+        if (event.key === 'Enter') {
+            startGame();
+        }
+        return; 
     }
-})
+    if (controls.includes(event.key)) {
+        checkInputs(event.key);
+    }
+});
 
 
-startbutton.addEventListener("click", () => {  // Game Start
-    playMusic()
-    showScore()
-    showPlayerHp()
-    showEnemyHp()
-    showEnemyDmg()
-    getNewSequence()
-    mainMenu.style.display = "none"
-    gameScreen.style.display = "flex"
-
-})
-
-
+function startGame() {
+    if (gameStarted) return;
+    gameStarted = true; 
+    getNewSequence();
+    playMusic();
+    showScore();
+    showPlayerHp();
+    showEnemyHp();
+    showEnemyDmg();
+    mainMenu.style.display = "none";
+    gameScreen.style.display = "flex"; 
+}
 
 
 
