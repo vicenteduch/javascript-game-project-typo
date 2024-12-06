@@ -59,3 +59,25 @@
     0%, 100% { opacity: 0; }
     50% { opacity: 1; }
 }
+
+/* RESPONSIVE MEDIA QUERYS */
+
+@media (max-width: 1366px) {
+    #main-title{
+        font-size: 3rem;
+    }
+    .instructions {
+        font-size: 0.8em;
+        width: 43vw;
+        height: 25vh;
+        padding: 1.5rem 2rem 2rem 2rem;
+    }
+    .instructions p{
+        margin-top: 0.7rem;
+    }
+    .start-game{
+        font-size: 0.8rem;
+        top: 25vh
+    }
+
+}
